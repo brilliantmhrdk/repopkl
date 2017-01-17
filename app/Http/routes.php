@@ -1,4 +1,5 @@
 <?php
+use App\Blog; 
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,24 @@ Route::post('/phalo_juga', function()
 		echo "%<br>";
 		$y++;
 	}
+});
+
+Route::get('/task2', 'SiteController@task2');
+
+Route::post('/ptask2', 'SiteController@ptask2');
+
+Route::get('/tambah', function()
+{
+    $blog = new Blog;  
+    $blog->nama = "Judul Pertama";
+    $blog->jumlah = "Deskripsi nya disini, contoh menambah data pada route.";
+    $blog->save();    
+});
+
+Route::get('/update', function()
+{
+    $blog = Blog::find(1);  
+    $blog->nama = "Judul Diedit";
+    $blog->jumlah = "Deskripsi juga sudah di Edit";
+    $blog->save();
 });
